@@ -11,6 +11,7 @@ namespace JobPostingParser
         {
             while (true)
             {
+                Console.WriteLine("-----------------------------");
                 Console.WriteLine("Paste the link to the job posting from LinkedIn or Indeed.");
                 var inputURL = Console.ReadLine();
                 JobBoardFactory jbf = new JobBoardFactory();
