@@ -17,6 +17,7 @@ namespace JobPostingParser.JobBoardScrapers
             string jobTitle = "";
             string companyName = "";
             string location = "";
+            string description = "";
             if (url.Contains(BASE_JOB_SEARCH_URL)) // Link is from search page
             {
                 string jobId = "";
@@ -86,10 +87,40 @@ namespace JobPostingParser.JobBoardScrapers
                     location = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/div[2]/div/div/div[3]").InnerHtml;
                     Console.WriteLine("4");
                 }
+                string city;
+                string state;
+                string zipCode;
+                string locationToParse = location;
                 Console.WriteLine("-----------------------------");
                 Console.WriteLine("Job Title: " + jobTitle);
                 Console.WriteLine("Company Name: " + companyName);
                 Console.WriteLine("Location: " + location);
+                if (!location.Equals("-"))
+                {
+                    locationToParse = locationToParse.Replace(",", "");
+                    string[] parsed = locationToParse.Split(" ");
+                    if (parsed.Length == 1)
+                    {
+                        state = parsed[0];
+                        Console.WriteLine("State: " + state);
+                    }
+                    if (parsed.Length == 2)
+                    {
+                        city = parsed[0];
+                        state = parsed[1];
+                        Console.WriteLine("City: " + city);
+                        Console.WriteLine("State: " + state);
+                    }
+                    if (parsed.Length == 3)
+                    {
+                        city = parsed[0];
+                        state = parsed[1];
+                        zipCode = parsed[2];
+                        Console.WriteLine("City: " + city);
+                        Console.WriteLine("State: " + state);
+                        Console.WriteLine("ZipCode " + zipCode);
+                    }
+                }
             } catch (NullReferenceException e)
             {
                 Console.WriteLine(e);
