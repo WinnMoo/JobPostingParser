@@ -56,9 +56,9 @@ namespace JobPostingParser.JobBoardScrapers
             try
             {
                 var rating = htmlDoc.DocumentNode.SelectSingleNode(
-                "/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/div[2]/div/div/div[2]/div/a/div[2]"); // Selects Review
+                "/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[3]/div[2]/div/div/div/div[2]/div/a"); // Selects Review
                 var banner = htmlDoc.DocumentNode.SelectSingleNode(
-                    "/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/div[1]/img[1]"); // Selects banner
+                    "/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/img[1]"); // Selects banner
                 if (rating != null && banner != null)
                 {
                     jobTitle = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/div[2]/h3").InnerText;
@@ -68,23 +68,23 @@ namespace JobPostingParser.JobBoardScrapers
                 }
                 else if (rating != null && banner == null)
                 {
-                    jobTitle = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/div[1]/h3").InnerText;
-                    companyName = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/div[2]/div/div/div[1]/a").InnerText;
-                    location = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/div[2]/div/div/div[4]").InnerText;
+                    jobTitle = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[3]/div[1]").InnerText;
+                    companyName = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[3]/div[2]/div/div/div/div[1]/a").InnerText;
+                    location = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[3]/div[2]/div/div/div/div[4]").InnerText;
                     Console.WriteLine("2");
                 }
                 else if (rating == null && banner != null)
                 {
-                    jobTitle = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/div[2]/h3").InnerText;
-                    companyName = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/div[3]/div/div/div[1]").InnerText;
-                    location = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/div[3]/div/div/div[3]").InnerText;
+                    jobTitle = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[4]/div[1]/h1").InnerText;
+                    companyName = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[4]/div[2]/div/div/div[1]/div[1]").InnerText;
+                    location = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[4]/div[2]/div/div/div[1]/div[3]").InnerText;
                     Console.WriteLine("3");
                 }
                 else if (rating == null && banner == null)
                 {
-                    jobTitle = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/div[1]/h3").InnerHtml;
-                    companyName = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/div[2]/div/div/div[1]").InnerText;
-                    location = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[2]/div[2]/div/div/div[3]").InnerHtml;
+                    jobTitle = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[3]/div[1]/h1").InnerHtml;
+                    companyName = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[3]/div[2]/div/div/div/div[1]").InnerText;
+                    location = htmlDoc.DocumentNode.SelectSingleNode("/html/body/div[1]/div[2]/div[3]/div/div/div[1]/div[1]/div[3]/div[2]/div/div/div/div[3]").InnerHtml;
                     Console.WriteLine("4");
                 }
                 string city;
