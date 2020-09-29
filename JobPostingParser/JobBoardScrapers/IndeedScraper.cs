@@ -97,27 +97,21 @@ namespace JobPostingParser.JobBoardScrapers
                 Console.WriteLine("Location: " + location);
                 if (!location.Equals("-"))
                 {
-                    locationToParse = locationToParse.Replace(",", "");
-                    string[] parsed = locationToParse.Split(" ");
-                    if (parsed.Length == 1)
+                    var splitByComma = locationToParse.Split(",");
+                    city = splitByComma[0];
+                    Console.WriteLine("City: " + city);
+                    location = splitByComma[1];
+                    location = location.Trim();
+                    var splitLocation = location.Split(" ");
+                    if(splitLocation.Length == 1)
                     {
-                        state = parsed[0];
+                        state = splitLocation[0];
                         Console.WriteLine("State: " + state);
-                    }
-                    if (parsed.Length == 2)
+                    } else if(splitLocation.Length == 2)
                     {
-                        city = parsed[0];
-                        state = parsed[1];
-                        Console.WriteLine("City: " + city);
+                        state = splitLocation[0];
                         Console.WriteLine("State: " + state);
-                    }
-                    if (parsed.Length == 3)
-                    {
-                        city = parsed[0];
-                        state = parsed[1];
-                        zipCode = parsed[2];
-                        Console.WriteLine("City: " + city);
-                        Console.WriteLine("State: " + state);
+                        zipCode = splitLocation[1];
                         Console.WriteLine("ZipCode " + zipCode);
                     }
                 }
